@@ -1,16 +1,10 @@
 import './index.css';
+import { header } from './components/header/header.js';
+import { main } from './components/main/main.js';
+import { footer } from './components/footer/footer.js';
 
 (() => {
   const page = document.querySelector('body');
-
-  const header = document.createElement('div');
-  header.id = 'header';
-
-  const main = document.createElement('div');
-  main.id = 'main';
-
-  const footer = document.createElement('div');
-  footer.id = 'footer';
 
   page.appendChild(header);
   page.appendChild(main);
