@@ -3,7 +3,7 @@ import './main.css';
 export  const main = document.createElement('div');
 main.id = 'main';
 
-const projectsDiv = document.createElement('div');
+export const projectsDiv = document.createElement('div');
 projectsDiv.id = 'projects-div';
 projectsDiv.classList.add('main-grid-item');
 
@@ -13,8 +13,15 @@ projectsHeader.textContent = 'Projects';
 const projectsHr = document.createElement('hr');
 projectsHr.classList.add = 'grid-item-hr';
 
+const addProjectBtn = document.createElement('div');
+addProjectBtn.id = 'add-project-button';
+addProjectBtn.textContent = '+';
+addProjectBtn.addEventListener('click', ()=>
+  console.log('Add Project Button Clicked'));
+
 projectsDiv.appendChild(projectsHeader);
 projectsDiv.appendChild(projectsHr);
+projectsDiv.appendChild(addProjectBtn);
 
 const toDosDiv = document.createElement('div');
 toDosDiv.id = 'to-dos-div';
