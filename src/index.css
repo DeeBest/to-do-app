@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   color: mediumvioletred;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 body{
   display: flex;

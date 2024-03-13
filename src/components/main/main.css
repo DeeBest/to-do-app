@@ -3,4 +3,44 @@
   min-width: 100vw;
   font-size: 1.3rem;
   font-weight: 500;
+  padding: 20px;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.main-grid-item{
+  border-radius: 15px;
+  padding: 10px;
+}
+.main-grid-item h3, hr {
+  align-self: center;
+}
+#projects-div{
+  background-color: rgb(192, 241, 241);
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+}
+#to-dos-div{
+  background-color: rgb(188, 188, 230);
+  grid-column: 2/4;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+}
+#notes-div{
+  background-color: rgb(209, 187, 187);
+  grid-column: 1/4;
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: column;
+}
+.main-grid-item hr{
+  width: 90%;
+  height: 5px;
+  background-color: steelblue;
+  border-radius: 15px;
+  margin-top: 4px;
 }
