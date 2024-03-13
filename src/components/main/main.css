@@ -44,3 +44,23 @@
   border-radius: 15px;
   margin-top: 4px;
 }
+
+@media screen and (max-width: 650px) {
+  #main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  #projects-div{
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  #to-dos-div{
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  #notes-div{
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+}
