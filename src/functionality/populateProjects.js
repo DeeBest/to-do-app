@@ -1,16 +1,14 @@
 import { projectsDiv } from "../components/main/main.js";
-import './createProjects.css'
+import './populateProjects.css'
 
-export function firstProject() {
+//an empty array to store the projects
+export let projects = []; 
+export let newProject;
+
+//function to display the projects in the projects grid item
+export function populateProjects() {
   let projectsList = document.createElement('div');
   projectsList.id = 'project-list';
-
-  let projects = [
-    'gym',
-    'build website', 
-    'trade forex',
-    'eat'
-  ];
 
   for (let i = 0; i < projects.length; i++){
     const projectItemDiv = document.createElement('div');
@@ -46,7 +44,8 @@ export function firstProject() {
     projectItemDiv.appendChild(projectItemBtnsDiv);
 
     projectsList.appendChild(projectItemDiv);
-  } 
+  }
 
   projectsDiv.appendChild(projectsList);
 };
+ 

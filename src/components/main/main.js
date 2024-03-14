@@ -41,7 +41,7 @@ notesDiv.id = 'notes-div';
 notesDiv.classList.add('main-grid-item');
 
 const notesHeader = document.createElement('h3');
-notesHeader.textContent = "Notes";
+notesHeader.textContent = "Notes To Self";
 
 const notesHr = document.createElement('hr');
 notesHr.classList.add = 'grid-item-hr';
