@@ -43,22 +43,9 @@ export function createProject() {
 
   // Create a new project
   let myProject = new Project("Workout");
-
-  // Add a new todo for the project
-  myProject.addTodo("Do Chest");
-
-  // Log the created project and its properties
-  console.log(myProject);
-  console.log(myProject.name);
-  console.log(myProject.todos);
-
+  
   // Add the newly created project to the projects array
   projects.push(myProject);
-
-  // Log the projects stored in the projects array
-  console.log(projects);
-  myProject.deleteProject();
-  console.log(projects);
 
   // Call the populateProjects function to display the projects in the UI
   populateProjects();

@@ -1,4 +1,5 @@
 import './main.css';
+import { createProjectPopUp } from '../../popUps/createProjectPopUp.js';
 
 export  const main = document.createElement('div');
 main.id = 'main';
@@ -16,8 +17,7 @@ projectsHr.classList.add = 'grid-item-hr';
 const addProjectBtn = document.createElement('div');
 addProjectBtn.id = 'add-project-button';
 addProjectBtn.textContent = '+';
-addProjectBtn.addEventListener('click', ()=>
-  console.log('Add Project Button Clicked'));
+addProjectBtn.addEventListener('click', createProjectPopUp);
 
 projectsDiv.appendChild(projectsHeader);
 projectsDiv.appendChild(projectsHr);
