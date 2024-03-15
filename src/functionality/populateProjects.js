@@ -1,8 +1,7 @@
-import { projectsDiv } from "../components/main/main.js";
 import "./populateProjects.css";
+import { projectsDiv } from "../components/main/main.js";
+import { projects } from "./createProject.js";
 
-// Import projects array from createProject.js
-import { projects } from "./createProject";
 
 // Function to populate the projects grid item
 export function populateProjects() {

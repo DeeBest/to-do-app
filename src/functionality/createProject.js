@@ -1,11 +1,10 @@
-// Import populateProjects function from populateProjects.js
-import { populateProjects } from "./populateProjects";
+import { populateProjects } from "./populateProjects.js";
 
-// Array to store projects
 export let projects = [];
 
 // Function to create a new project
 export function createProject() {
+
   // Define Project class
   class Project {
     constructor(name) {
@@ -41,12 +40,9 @@ export function createProject() {
     }
   }
 
-  // Create a new project
-  let myProject = new Project("Workout");
-  
-  // Add the newly created project to the projects array
-  projects.push(myProject);
+  // populateProjects();
 
-  // Call the populateProjects function to display the projects in the UI
-  populateProjects();
+  return Project;
+
+  
 }

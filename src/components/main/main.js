@@ -9,7 +9,7 @@ projectsDiv.id = 'projects-div';
 projectsDiv.classList.add('main-grid-item');
 
 const projectsHeader = document.createElement('h3');
-projectsHeader.textContent = 'Projects';
+projectsHeader.textContent = `One's Projects`;
 
 const projectsHr = document.createElement('hr');
 projectsHr.classList.add = 'grid-item-hr';
@@ -28,7 +28,7 @@ toDosDiv.id = 'to-dos-div';
 toDosDiv.classList.add('main-grid-item');
 
 const toDosHeader = document.createElement('h3');
-toDosHeader.textContent = "To-Do's";
+toDosHeader.textContent = "One's To-Do's";
 
 const toDosHr = document.createElement('hr');
 toDosHr.classList.add = 'grid-item-hr';
