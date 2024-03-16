@@ -5,6 +5,10 @@ import { projects } from "./createProject.js";
 
 // Function to populate the projects grid item
 export function populateProjects() {
+
+  const projectItems = document.querySelectorAll(".project-item-div");
+  projectItems.forEach(item => item.remove());
+
   // Create a container for the projects list
   let projectsList = document.createElement("div");
   projectsList.id = "project-list";
@@ -53,8 +57,9 @@ export function populateProjects() {
 
     // Append project item div to the projects list container
     projectsList.appendChild(projectItemDiv);
-  });
 
+  });
+  
   // Append the projects list container to the projects div in the DOM
   projectsDiv.appendChild(projectsList);
 }

@@ -4,6 +4,7 @@ import { populateProjects } from '../functionality/populateProjects.js';
 
 // Function to create the popup
 export function createProjectPopUp() {
+
   // Create overlay element
   const overlay = document.createElement("div");
   overlay.id = "popup-overlay";
@@ -18,12 +19,16 @@ export function createProjectPopUp() {
 
   // Create form
   const form = document.createElement("form");
+
+  form.reset();
+
   form.id = "project-form";
 
   // Create input for project name
   const projectNameLabel = document.createElement("label");
   projectNameLabel.for = "project-name";
   projectNameLabel.textContent = "Project Name:";
+
   const projectNameInput = document.createElement("input");
   projectNameInput.type = "text";
   projectNameInput.id = "project-name";
@@ -63,19 +68,23 @@ export function createProjectPopUp() {
 
   // Function to handle form submission
   function handleFormSubmit(event) {
-    event.preventDefault();
-
+    event.preventDefault
+    
     let newProjectClass = createProject();
-
+    
     let myNewProject = new newProjectClass(projectNameInput.value);
-
+    
     projects.push(myNewProject);
+
+    console.log(projects);
 
     populateProjects();
 
-    form.reset();
-
     document.body.removeChild(overlay);
 
+   // Remove event listener after handling form submission
+   form.removeEventListener("submit", handleFormSubmit);
   }
+
+  form.addEventListener("submit", handleFormSubmit);
 }

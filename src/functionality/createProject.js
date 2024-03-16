@@ -1,5 +1,3 @@
-import { populateProjects } from "./populateProjects.js";
-
 export let projects = [];
 
 // Function to create a new project
@@ -39,10 +37,5 @@ export function createProject() {
       }
     }
   }
-
-  // populateProjects();
-
   return Project;
-
-  
 }
