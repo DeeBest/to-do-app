@@ -8,6 +8,10 @@ export function createProjectPopUp() {
   // Create overlay element
   const overlay = document.createElement("div");
   overlay.id = "popup-overlay";
+  
+  setTimeout(() => {
+    overlay.classList.add("active"); // Show overlay
+  }, 0.8); 
 
   // Create popup container
   const popupContainer = document.createElement("div");
@@ -45,7 +49,10 @@ export function createProjectPopUp() {
   closeButton.textContent = "x";
   closeButton.id = 'close-popup';
   closeButton.addEventListener("click", () => {
-    document.body.removeChild(overlay);
+    overlay.classList.remove("active"); // Hide overlay
+    setTimeout(() => {
+      document.body.removeChild(overlay); // Remove overlay after transition ends
+    }, 1000); // 1000s is the duration of the transition
   });
 
   // Append elements to form
