@@ -42,7 +42,8 @@ export function createProjectPopUp() {
 
   // Create close button
   const closeButton = document.createElement("button");
-  closeButton.textContent = "Close";
+  closeButton.textContent = "x";
+  closeButton.id = 'close-popup';
   closeButton.addEventListener("click", () => {
     document.body.removeChild(overlay);
   });
@@ -53,9 +54,9 @@ export function createProjectPopUp() {
   form.appendChild(submitButton);
 
   // Append elements to popup container
+  popupContainer.appendChild(closeButton);
   popupContainer.appendChild(heading);
   popupContainer.appendChild(form);
-  popupContainer.appendChild(closeButton);
 
   // Append popup container to overlay
   overlay.appendChild(popupContainer);
@@ -69,7 +70,7 @@ export function createProjectPopUp() {
   // Function to handle form submission
   function handleFormSubmit(event) {
     event.preventDefault
-    
+
     let newProjectClass = createProject();
     
     let myNewProject = new newProjectClass(projectNameInput.value);
