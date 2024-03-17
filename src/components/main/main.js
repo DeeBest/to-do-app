@@ -1,5 +1,6 @@
 import './main.css';
 import { createProjectPopUp } from '../../popUps/createProjectPopUp.js';
+import { createNotes } from '../../functionality/createNote.js';
 
 export  const main = document.createElement('div');
 main.id = 'main';
@@ -46,8 +47,18 @@ notesHeader.textContent = "Notes To Self";
 const notesHr = document.createElement('hr');
 notesHr.classList.add = 'grid-item-hr';
 
+const addNoteBtn = document.createElement('button');
+addNoteBtn.id = 'add-note-btn';
+addNoteBtn.textContent = '+';
+addNoteBtn.addEventListener('click', createNotes);
+
+export const notesContainer = document.createElement('div');
+notesContainer.id = 'notes-container';
+
 notesDiv.appendChild(notesHeader);
 notesDiv.appendChild(notesHr);
+notesDiv.appendChild(addNoteBtn);
+notesDiv.appendChild(notesContainer);
 
 main.appendChild(projectsDiv);
 main.appendChild(toDosDiv);

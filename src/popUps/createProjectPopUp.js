@@ -84,8 +84,6 @@ export function createProjectPopUp() {
     
     projects.push(myNewProject);
 
-    console.log(projects);
-
     populateProjects();
 
     document.body.removeChild(overlay);

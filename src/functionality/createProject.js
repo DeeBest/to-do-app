@@ -8,7 +8,6 @@ export function createProject() {
     constructor(name) {
       this.name = name;
       this.todos = [];
-      this.notes = [];
     }
 
     addTodo(todo) {
