@@ -13,6 +13,17 @@ export function createNotes(){
   const notePopupContainer = document.createElement("div");
   notePopupContainer.id = "note-popup-container";
 
+  const closeNoteFormBtn = document.createElement("button");
+  closeNoteFormBtn.textContent = "x";
+  closeNoteFormBtn.id = 'close-note-form-btn';
+  closeNoteFormBtn.addEventListener("click", () => {
+    noteOverlay.classList.remove("active"); // Hide overlay
+    setTimeout(() => {
+      document.body.removeChild(noteOverlay); // Remove overlay after transition ends
+    }, 1000); // 1000s is the duration of the transition
+  });
+  notePopupContainer.appendChild(closeNoteFormBtn);
+
   const heading = document.createElement("h2");
   heading.textContent = "Create A Note";
   notePopupContainer.appendChild(heading);
@@ -23,22 +34,11 @@ export function createNotes(){
 
   form.reset();
 
-  const closeNoteFormBtn = document.createElement("button");
-  closeNoteFormBtn.textContent = "x";
-  closeNoteFormBtn.id = 'close-note-form-btn';
-  closeNoteFormBtn.addEventListener("click", () => {
-    noteOverlay.classList.remove("active"); // Hide overlay
-    setTimeout(() => {
-      document.body.removeChild(noteOverlay); // Remove overlay after transition ends
-    }, 1000); // 1000s is the duration of the transition
-  });
-  form.appendChild(closeNoteFormBtn);
-
   const noteMessage = document.createElement("textarea");
   noteMessage.id = "note-message";
   noteMessage.name = "note-message";
   noteMessage.placeholder = 'Type Note Message';
-  noteMessage.maxLength = 250;
+  noteMessage.maxLength = 150;
   noteMessage.required = true;
   form.appendChild(noteMessage);
 

@@ -331,14 +331,87 @@ body{
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  width: 40%;
+  max-width: 40%;
+  max-height: 60%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
+#close-note-form-btn{
+  background-color: whitesmoke;
+  color: red;
+  border-radius: 20px;
+  width: 25px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  align-self: flex-end;
+  justify-self: flex-end;
+  transition: background-color 1s, color 1s, outline 1s;
+}
+
+#close-note-form-btn:hover{
+  background-color: red;
+  color: whitesmoke;
+  outline: 1px solid whitesmoke;
+}
+
+#note-popup-container h2{
+  margin-bottom: 5px;
+}
+
+#note-popup-container form{
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  max-width: 90%;
+  padding: 10px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+#note-popup-container form textarea{
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  background-color: wheat;
+  color: mediumvioletred;
+  font-size: large;
+  font-weight: 600;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#note-popup-container form button{
+  width: 50%;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  color: wheat;
+  background-color: mediumvioletred;
+  font-size: medium;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+#note-popup-container form button:hover{
+  background-color: wheat;
+  color: mediumvioletred;
+  outline: 1px solid mediumvioletred;
+}
 #footer{
   flex:1;
   display: flex;
