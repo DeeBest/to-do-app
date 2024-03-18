@@ -64,10 +64,14 @@
 }
 #notes-container{
   width: 90%;
-  background-color: bisque;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
 }
 .main-grid-item hr{
   width: 90%;

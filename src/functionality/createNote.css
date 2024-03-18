@@ -21,8 +21,8 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  max-width: 40%;
-  max-height: 60%;
+  max-width: 70%;
+  max-height: 90%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -101,4 +101,55 @@
   background-color: wheat;
   color: mediumvioletred;
   outline: 1px solid mediumvioletred;
+}
+
+.note-card{
+  background-color: bisque;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid gray;
+  border-bottom: 4px solid gray;
+  color: cadetblue;
+  font-size: larger;
+  font-weight: 500;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.note-card button{
+  width: 50%;
+  margin-top: 15px;
+  padding: 5px;
+  text-align: center;
+  font-size: large;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: wheat;
+  background-color: red;
+  cursor: pointer;
+  transition: all 1s;
+}
+.note-card button:hover{
+  background-color: wheat;
+  color: red;
+  outline: 1px solid red;
+}
+
+
+@media screen and (max-width: 6500px){
+  #note-popup-container{
+    min-width:95%
+  } 
+  #note-popup-container form{
+    min-width: 100%;
+  }
+  #note-popup-container form textarea{
+    min-width: 95%;
+  }
 }

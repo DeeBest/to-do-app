@@ -4,6 +4,7 @@
   box-sizing: border-box;
   color: mediumvioletred;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  overflow-wrap: normal;
 }
 body{
   display: flex;
@@ -11,4 +12,7 @@ body{
   min-height: 100vh;
   min-width: 100vw;
   background-color: rgb(208, 218, 238);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
