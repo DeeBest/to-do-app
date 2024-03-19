@@ -1,7 +1,7 @@
-import { projects } from "./createProject.js";
 import { createProject } from "./createProject.js";
 
-export function createProjectToDo(){
+export function createProjectToDo(event){
+  event.preventDefault();
 
   //this makes the newToDo a class and it inherit the methods from the createProject function class which is Project
   let newToDo = createProject();

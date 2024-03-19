@@ -1,7 +1,7 @@
 import "./populateProjects.css";
 import { projectsDiv } from "../components/main/main.js";
 import { projects } from "./createProject.js";
-import { createProjectToDo } from "./createToDo.js";
+import { newToDoForm } from "./newToDoForm.js";
 
 
 // Function to populate the projects grid item
@@ -34,7 +34,7 @@ export function populateProjects() {
     projectAddToDoBtn.classList.add("project-item-button");
     projectAddToDoBtn.id = "project-add-to-do-button";
     projectAddToDoBtn.textContent = `+ To Do`;
-    projectAddToDoBtn.addEventListener('click', createProjectToDo);
+    projectAddToDoBtn.addEventListener('click', newToDoForm);
 
     // Create button to edit the project
     let projectEditBtn = document.createElement("button");
