@@ -144,16 +144,15 @@ body{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0; /* Initially hidden */
-  transition: opacity 1.2s ease; /* Smooth transition for opacity */
-  /* z-index: 999; */
+  opacity: 0;
+  transition: opacity 1.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
 } 
 
 #popup-overlay.active {
-  opacity: 1; /* Show overlay */
+  opacity: 1;
 }
 
 #popup-container {
@@ -314,6 +313,114 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+#new-to-do-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+#new-to-do-form-overlay.active {
+  opacity: 1;
+}
+
+#to-do-popup-container {
+  background-color: rgb(198, 193, 193);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#to-do-popup-container h2 {
+  margin-top: 0;
+}
+
+#to-do-form{
+  display: flex;
+  flex-direction: column;
+  min-width: 90%;
+}
+
+#to-do-due-date,
+#to-do-input,
+#to-do-form button {
+  display: block;
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: 600;
+  padding: 10px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+#to-do-form input,
+#to-do-due-date{
+  max-width: 90%;
+  border: none;
+  outline: none;
+  color: steelblue;
+  background: wheat;
+}
+
+#to-do-form button{
+  min-width: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: antiquewhite;
+  color: steelblue;
+  transition: background-color 1s, color 1s, outline 1s;
+}
+#to-do-form button:hover{
+  background-color: steelblue;
+  color: antiquewhite;
+  outline: 1px solid antiquewhite;
+}
+
+#to-do-popup-container #close-to-do-popup-container {
+  background-color: whitesmoke;
+  color: red;
+  border-radius: 20px;
+  width: 25px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  align-self: flex-end;
+  justify-self: flex-end;
+  transition: background-color 1s, color 1s, outline 1s;
+}
+#to-do-popup-container #close-to-do-popup-container:hover{
+  background-color: red;
+  color: whitesmoke;
+  outline: 1px solid whitesmoke;
+}
+
+
+@media screen and (max-width:750px) {
+  #to-do-popup-container {
+    width: 90%;
+  }
+  #to-do-form input{
+    max-width: 90%;
   }
 }
 #note-overlay {
