@@ -23,7 +23,7 @@ export function populateProjects() {
     // Create a span element to display the project name
     let projectName = document.createElement("span");
     projectName.classList.add("project-name");
-    projectName.textContent = project.name;
+    projectName.textContent = project.projectName;
 
     // Create div for project item buttons
     let projectItemBtnsDiv = document.createElement("div");

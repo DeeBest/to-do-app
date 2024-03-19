@@ -1,6 +1,5 @@
 import './createNote.css';
 import { notesContainer } from "../components/main/main.js";
-import { displayNote } from './displayNote.js';
 
 let notes = [];
 
@@ -81,7 +80,6 @@ export function createNotes(){
     notesContainer.appendChild(noteCard);
     
     form.reset();
-    console.log(notes);
 
     noteOverlay.classList.remove("active");
 

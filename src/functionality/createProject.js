@@ -5,13 +5,19 @@ export function createProject() {
 
   // Define Project class
   class Project {
-    constructor(name) {
-      this.name = name;
+    constructor(projectName) {
+      this.projectName = projectName;
       this.todos = [];
     }
 
-    addTodo(todo) {
-      this.todos.push(todo);
+    addTodo() {
+      class toDo{
+        constructor(toDoName, toDoDueDate){
+          this.toDoName = toDoName;
+          this.toDoDueDate = toDoDueDate;
+        }
+      }
+      return toDo;
     }
 
     editTodo(todoIndex, updatedTodo) {
