@@ -27,7 +27,7 @@ export function createProject() {
 
     let removeProjectBtn = document.createElement('button');
     removeProjectBtn.classList.add('removeProjectBtn');
-    removeProjectBtn.textContent = 'X';
+    removeProjectBtn.textContent = '-Project';
     projectItem.appendChild(removeProjectBtn);
 
     projectNameInput.value = '';

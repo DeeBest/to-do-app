@@ -39,7 +39,7 @@
   border: none;
   outline: none;
   border-radius: 10px;
-  width: 15%;
+  width: 100px;
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -59,12 +59,12 @@
   min-width: 80%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   border: none;
   border-radius: 10px;
   text-align: center;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 .projectItem{
   display: flex;
@@ -86,14 +86,13 @@
   background-color: red;
   color: white;
   font-weight: bold;
-  padding: 4px;
+  font-size: 1.2rem;
+  padding: 10px 5px;
   text-align: center;
   border: none;
   outline: none;
-  border-radius: 50px;
-  width: 5%;
-  align-self: flex-start;
-  justify-self: flex-end;
+  border-radius: 10px;
+  width: 100px;
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -106,4 +105,27 @@
   background-color: hsl(0, 100%, 30%);
   color: hsl(0, 0%, 80%);
   transform: scale(0.97);
+}
+
+@media screen and (max-width:600px) {
+ #projectForm{
+  flex-direction: column;
+  justify-content: flex-start;
+ }
+  .projectItem{
+  min-width: 100%;
+  flex-direction: column;
+ }
+ #projectNameInput{
+  min-width: 100%;
+ } 
+ #projectsContainer{
+  min-width: 100%;
+ }
+ #main{
+  padding: 10px;
+ }
+ .projectName{
+  margin: 0;
+ }
 }
