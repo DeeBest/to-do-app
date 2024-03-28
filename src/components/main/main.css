@@ -41,7 +41,7 @@
   border-radius: 10px;
   width: 15%;
   cursor: pointer;
-  transition: all 1s;
+  transition: all 0.5s;
 }
 #submitProjectBtn:hover,
 .addToDoBtn:hover {
@@ -95,6 +95,7 @@
   align-self: flex-start;
   justify-self: flex-end;
   cursor: pointer;
+  transition: all 0.5s;
 }
 .removeProjectBtn:hover{
   background-color: hsl(0, 100%, 40%);
