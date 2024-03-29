@@ -41,8 +41,21 @@ export function createProject() {
 
     let projectBody = document.createElement('div');
     projectBody.classList.add('projectBody');
-    projectBody.textContent = 'project body';
     projectItem.appendChild(projectBody);
+
+    let notesDiv = document.createElement('div');
+    notesDiv.classList.add('notesDiv');
+    projectBody.appendChild(notesDiv);
+
+    let notesHeading = document.createElement('h3');
+    notesHeading.classList.add('notesHeading')
+    notesHeading.textContent = 'Notes';
+    notesDiv.appendChild(notesHeading);
+
+    let notesTextarea = document.createElement('textarea');
+    notesTextarea.classList.add('notesTextarea');
+    notesTextarea.placeholder = 'Notes about the project...';
+    notesDiv.appendChild(notesTextarea);
     
     // let addToDoBtn = document.createElement('button');
     // addToDoBtn.classList.add('addToDoBtn');
