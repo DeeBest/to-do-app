@@ -68,6 +68,7 @@
 }
 .projectItem{
   display: flex;
+  flex-direction: column;
   gap: 20px;
   align-items: center;
   padding: 10px;
@@ -75,12 +76,40 @@
   min-width: 90%;
   border-radius: 15px;
   box-shadow: 1.5px 1.5px 3px 1px hsla(0, 0%, 10%, 0.8);
+  cursor: pointer;
+  transition: all 1s;
 }
-.projectName{
+.projectItem:hover{
+  transform: scale(0.99);
+}
+.projectHeader{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 10px;
+  min-width: 100%;
+}
+.projectBody{
+  min-width: 100%;
+}
+.projectCheckBox{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.projectName,
+.dueDate,
+.arrowSpan{
   font-weight: bold;
   color: hsl(0, 0%, 100%, 0.7);
-  margin-right: auto;
   font-size: 1.5rem;
+}
+.projectName{
+  margin-right: auto;
+}
+.arrowSpan:hover{
+  color: hsl(0, 0%, 100%);
 }
 .removeProjectBtn{
   background-color: red;
