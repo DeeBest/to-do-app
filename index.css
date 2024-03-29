@@ -241,6 +241,11 @@ body{
   transform: scale(0.97);
 }
 
+.completedProject{
+  text-decoration: line-through;
+  color: hsl(0, 0%, 100%, 0.4);
+}
+
 @media screen and (max-width:600px) {
  #projectForm{
   flex-direction: column;
