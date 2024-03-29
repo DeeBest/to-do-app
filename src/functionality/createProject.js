@@ -7,7 +7,9 @@ export function createProject() {
     }
   }
 
-  let currentDateDay = `${new Date().getDate()}/${(new Date().getMonth()) + 1}/${new Date().getFullYear()}`;
+  let currentDateDay = `${new Date().getDate()}/${
+    new Date().getMonth() + 1
+  }/${new Date().getFullYear()}`;
 
   if (projectNameInput.value) {
     let newProject = new Project(projectNameInput.value);
@@ -103,10 +105,7 @@ export function createProject() {
     removeProjectBtn.textContent = 'Delete';
     deleteProjectBtnDiv.appendChild(removeProjectBtn);
 
-    arrowSpan.addEventListener('click', () => {
-      projectBody.classList.toggle('show');
-      arrowSpan.classList.toggle('arrowSpanUp');
-    });
+    arrowSpan.addEventListener('click', handleArrowSpanClick);
 
     prioritySelect.addEventListener('change', function () {
       let selectedOption = this.value;
@@ -120,14 +119,31 @@ export function createProject() {
       }
     });
 
-    // Add event listener to the date input
-    dueDateInput.addEventListener('change', function () {
-      // Get the value of the selected date from the date input
-      const selectedDate = this.value;
+    function handleArrowSpanClick() {
+      projectBody.classList.toggle('show');
+      arrowSpan.classList.toggle('arrowSpanUp');
+    }
 
-      // Update the text content of the span element with the selected date
-      dueDate.textContent = selectedDate;
+    dueDateInput.addEventListener('change', function () {
+      const selectedDate = this.value;
+      const [year, month, day] = selectedDate.split('-');
+      const formattedDate = `${day}/${month}/${year}`;
+      dueDate.textContent = formattedDate;
     });
+
+    projectCheckBox.addEventListener('change', function() {
+      if(this.checked){
+        projectName.classList.add('completedProject');
+        dueDate.classList.add('completedProject');
+        arrowSpan.removeEventListener('click', handleArrowSpanClick);
+        projectBody.classList.remove('show');
+        arrowSpan.classList.remove('arrowSpanUp');
+      } else {
+        projectName.classList.remove('completedProject');
+        dueDate.classList.remove('completedProject');
+        arrowSpan.addEventListener('click', handleArrowSpanClick);
+      }
+    })
 
     projectNameInput.value = '';
   } else {
