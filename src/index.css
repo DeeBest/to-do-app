@@ -5,6 +5,9 @@
   color: hsla(0, 0%, 0%, 0.6);
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+html{
+  scroll-behavior: smooth;
+}
 body{
   display: flex;
   flex-direction: column;

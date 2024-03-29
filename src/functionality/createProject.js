@@ -84,7 +84,6 @@ export function createProject() {
     prioritySelect.classList.add('prioritySelect');
     priorityDiv.appendChild(prioritySelect);
 
-    // Array of priority options
     const priorityOptions = ['Low', 'Medium', 'High'];
 
     priorityOptions.forEach((option) => {
@@ -95,7 +94,7 @@ export function createProject() {
     });
 
     let deleteProjectBtnDiv = document.createElement('div');
-    deleteProjectBtnDiv.classList.add('deleteProjectBtnDiv')
+    deleteProjectBtnDiv.classList.add('deleteProjectBtnDiv');
     projectBody.appendChild(deleteProjectBtnDiv);
 
     let removeProjectBtn = document.createElement('button');
@@ -103,9 +102,25 @@ export function createProject() {
     removeProjectBtn.textContent = 'Delete';
     deleteProjectBtnDiv.appendChild(removeProjectBtn);
 
+    arrowSpan.addEventListener('click', () => {
+      projectBody.classList.toggle('show');
+      arrowSpan.classList.toggle('arrowSpanUp');
+    });
+
+    prioritySelect.addEventListener('change', function () {
+      let selectedOption = this.value;
+
+      if (selectedOption === 'low') {
+        projectItem.style.borderLeft = '15px solid green'; // Apply styles for Low priority
+      } else if (selectedOption === 'medium') {
+        projectItem.style.borderLeft = '15px solid yellow'; // Apply styles for Medium priority
+      } else if (selectedOption === 'high') {
+        projectItem.style.borderLeft = '15px solid red'; // Apply styles for High priority
+      }
+    });
+
     projectNameInput.value = '';
   } else {
     alert('Please enter a project name!');
   }
 }
-
