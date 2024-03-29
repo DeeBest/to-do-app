@@ -4,9 +4,10 @@ export function createProject() {
   class Project {
     constructor(name) {
       this.name = name;
-      this.toDos = [];
     }
   }
+
+  let currentDateDay = `${new Date().getDate()}/${(new Date().getMonth()) + 1}/${new Date().getFullYear()}`;
 
   if (projectNameInput.value) {
     let newProject = new Project(projectNameInput.value);
@@ -31,7 +32,7 @@ export function createProject() {
 
     let dueDate = document.createElement('span');
     dueDate.classList.add('dueDate');
-    dueDate.textContent = '20/06/2024';
+    dueDate.textContent = currentDateDay;
     projectHeader.appendChild(dueDate);
 
     let arrowSpan = document.createElement('span');
@@ -111,12 +112,21 @@ export function createProject() {
       let selectedOption = this.value;
 
       if (selectedOption === 'low') {
-        projectItem.style.borderLeft = '15px solid green'; // Apply styles for Low priority
+        projectItem.style.borderLeft = '15px solid green';
       } else if (selectedOption === 'medium') {
-        projectItem.style.borderLeft = '15px solid yellow'; // Apply styles for Medium priority
+        projectItem.style.borderLeft = '15px solid yellow';
       } else if (selectedOption === 'high') {
-        projectItem.style.borderLeft = '15px solid red'; // Apply styles for High priority
+        projectItem.style.borderLeft = '15px solid red';
       }
+    });
+
+    // Add event listener to the date input
+    dueDateInput.addEventListener('change', function () {
+      // Get the value of the selected date from the date input
+      const selectedDate = this.value;
+
+      // Update the text content of the span element with the selected date
+      dueDate.textContent = selectedDate;
     });
 
     projectNameInput.value = '';
