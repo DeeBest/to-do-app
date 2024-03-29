@@ -148,6 +148,59 @@ body{
 .arrowSpan:hover{
   color: hsl(0, 0%, 100%);
 }
+.projectBody{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+}
+.notesDiv{
+  grid-column: 1/2;
+  grid-row: 1/4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.notesTextarea{
+  min-width: 95%;
+  max-width: 100%;
+  min-height: 250px;
+  max-height: 500px;
+  resize: none;
+  overflow: hidden;
+  background-color: hsl(0, 0%, 70%);
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 10px;
+}
+.dueDateDiv{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.dueDateInput,
+.prioritySelect{
+  min-width: 95%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: hsl(0, 0%, 70%);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+}
+.deleteProjectBtnDiv{
+  display: flex;
+  padding: 10px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
 .removeProjectBtn{
   background-color: red;
   color: white;

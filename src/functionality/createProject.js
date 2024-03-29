@@ -48,7 +48,7 @@ export function createProject() {
     projectBody.appendChild(notesDiv);
 
     let notesHeading = document.createElement('h3');
-    notesHeading.classList.add('notesHeading')
+    notesHeading.classList.add('notesHeading');
     notesHeading.textContent = 'Notes';
     notesDiv.appendChild(notesHeading);
 
@@ -56,16 +56,52 @@ export function createProject() {
     notesTextarea.classList.add('notesTextarea');
     notesTextarea.placeholder = 'Notes about the project...';
     notesDiv.appendChild(notesTextarea);
-    
-    // let addToDoBtn = document.createElement('button');
-    // addToDoBtn.classList.add('addToDoBtn');
-    // addToDoBtn.textContent = '+To-Do';
-    // projectItem.appendChild(addToDoBtn);
 
-    // let removeProjectBtn = document.createElement('button');
-    // removeProjectBtn.classList.add('removeProjectBtn');
-    // removeProjectBtn.textContent = '-Project';
-    // projectItem.appendChild(removeProjectBtn);
+    let dueDateDiv = document.createElement('div');
+    dueDateDiv.classList.add('dueDateDiv');
+    projectBody.appendChild(dueDateDiv);
+
+    let dueDateHeading = document.createElement('h3');
+    dueDateHeading.classList.add('dueDateHeading');
+    dueDateHeading.textContent = 'Due Date';
+    dueDateDiv.appendChild(dueDateHeading);
+
+    let dueDateInput = document.createElement('input');
+    dueDateInput.classList.add('dueDateInput');
+    dueDateInput.type = 'date';
+    dueDateDiv.appendChild(dueDateInput);
+
+    let priorityDiv = document.createElement('div');
+    priorityDiv.classList.add('priorityDiv');
+    projectBody.appendChild(priorityDiv);
+
+    let priorityHeading = document.createElement('h3');
+    priorityHeading.classList.add('priorityHeading');
+    priorityHeading.textContent = 'Priority';
+    priorityDiv.appendChild(priorityHeading);
+
+    let prioritySelect = document.createElement('select');
+    prioritySelect.classList.add('prioritySelect');
+    priorityDiv.appendChild(prioritySelect);
+
+    // Array of priority options
+    const priorityOptions = ['Low', 'Medium', 'High'];
+
+    priorityOptions.forEach((option) => {
+      const optionElement = document.createElement('option');
+      optionElement.value = option.toLowerCase();
+      optionElement.textContent = option;
+      prioritySelect.appendChild(optionElement);
+    });
+
+    let deleteProjectBtnDiv = document.createElement('div');
+    deleteProjectBtnDiv.classList.add('deleteProjectBtnDiv')
+    projectBody.appendChild(deleteProjectBtnDiv);
+
+    let removeProjectBtn = document.createElement('button');
+    removeProjectBtn.classList.add('removeProjectBtn');
+    removeProjectBtn.textContent = 'Delete';
+    deleteProjectBtnDiv.appendChild(removeProjectBtn);
 
     projectNameInput.value = '';
   } else {
