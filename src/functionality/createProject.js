@@ -1,5 +1,7 @@
 import { projectNameInput, projectsContainer } from '../components/main/main';
 
+let projects = [];
+
 export function createProject() {
   class Project {
     constructor(name) {
@@ -144,6 +146,10 @@ export function createProject() {
         arrowSpan.addEventListener('click', handleArrowSpanClick);
       }
     })
+
+    removeProjectBtn.addEventListener('click', () => {
+      projectItem.remove();
+    });
 
     projectNameInput.value = '';
   } else {
