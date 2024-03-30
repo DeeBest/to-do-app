@@ -1,7 +1,5 @@
 import { projectNameInput, projectsContainer } from '../components/main/main';
 
-let projects = [];
-
 export function createProject() {
   class Project {
     constructor(name) {
@@ -152,7 +150,10 @@ export function createProject() {
     });
 
     projectNameInput.value = '';
+    projectNameInput.style.border = 'none';
+    projectNameInput.placeholder = 'Project name...';
   } else {
-    alert('Please enter a project name!');
+    projectNameInput.style.border = '2px solid tomato';
+    projectNameInput.placeholder = 'Project name REQUIRED!!'
   }
 }
