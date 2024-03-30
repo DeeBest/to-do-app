@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  animation: slideInFromLeft 1s ease-in;
 }
 #projectForm {
   display: flex;
@@ -206,6 +207,16 @@
   color: hsl(0, 0%, 100%, 0.4);
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
 @media screen and (max-width:600px) {
  #projectForm{
   flex-direction: column;
@@ -226,5 +237,18 @@
  }
  .projectName{
   margin: 0;
+ }
+ .projectHeader{
+  flex-wrap: wrap;
+  text-align: center;
+ }
+ .dueDate{
+  margin: 0px auto;
+ }
+ .projectBody{
+  grid-template-columns: 1fr;
+ }
+ .notesTextarea{
+  min-height: min-content;
  }
 }

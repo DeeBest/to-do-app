@@ -1,5 +1,5 @@
 import './main.css';
-import { createProject } from '../../functionality/createProject';
+import { createProject } from '../../functionality/createProject.js';
 
 export const main = document.createElement('div');
 main.id = 'main';

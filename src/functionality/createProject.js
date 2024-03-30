@@ -1,4 +1,4 @@
-import { projectNameInput, projectsContainer } from '../components/main/main';
+import { projectNameInput, projectsContainer } from '../components/main/main.js';
 
 export function createProject() {
   class Project {

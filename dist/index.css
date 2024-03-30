@@ -27,6 +27,7 @@ body{
   align-items: center;
   min-width: 100vw;
   padding: 10px;
+  animation: slideInFromTop 1s ease-in;
 }
 #header h1{
   color: steelblue;
@@ -38,6 +39,15 @@ body{
   border-radius: 15px;
   margin-top: 7px;
 }
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 #main {
   flex: 2;
   min-width: 100vw;
@@ -47,6 +57,7 @@ body{
   display: flex;
   flex-direction: column;
   text-align: center;
+  animation: slideInFromLeft 1s ease-in;
 }
 #projectForm {
   display: flex;
@@ -246,6 +257,16 @@ body{
   color: hsl(0, 0%, 100%, 0.4);
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
 @media screen and (max-width:600px) {
  #projectForm{
   flex-direction: column;
@@ -267,6 +288,19 @@ body{
  .projectName{
   margin: 0;
  }
+ .projectHeader{
+  flex-wrap: wrap;
+  text-align: center;
+ }
+ .dueDate{
+  margin: 0px auto;
+ }
+ .projectBody{
+  grid-template-columns: 1fr;
+ }
+ .notesTextarea{
+  min-height: min-content;
+ }
 }
 #footer{
   flex:1;
@@ -276,4 +310,14 @@ body{
   min-width: 100vw;
   font-size: 1.3rem;
   font-weight: bold;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
