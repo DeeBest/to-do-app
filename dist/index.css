@@ -138,8 +138,23 @@ body{
   display: flex;
   gap: 20px;
   align-items: center;
-  padding: 10px;
   min-width: 100%;
+  justify-content: space-between;
+}
+.projectNameAndCheckBoxDiv{
+  flex: 1;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.dueDateAndArrowDiv{
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
 }
 .projectCheckBox{
     width: 20px;
@@ -153,9 +168,6 @@ body{
   font-weight: bold;
   color: hsl(0, 0%, 100%, 0.7);
   font-size: 1.5rem;
-}
-.projectName{
-  margin-right: auto;
 }
 .arrowSpan{
   cursor: pointer;
@@ -285,15 +297,14 @@ body{
  #main{
   padding: 10px;
  }
- .projectName{
-  margin: 0;
- }
  .projectHeader{
-  flex-wrap: wrap;
-  text-align: center;
+  flex-direction: column;
+  
  }
- .dueDate{
-  margin: 0px auto;
+ .projectNameAndCheckBoxDiv,
+ .dueDateAndArrowDiv{
+  min-width: 100%;
+  justify-content: center;
  }
  .projectBody{
   grid-template-columns: 1fr;
