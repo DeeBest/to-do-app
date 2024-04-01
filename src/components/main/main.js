@@ -1,3 +1,5 @@
+//main.js
+
 import './main.css';
 import { createProject } from '../../functionality/createProject.js';
 
