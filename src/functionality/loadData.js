@@ -1,13 +1,13 @@
 //loadData.js
 
-import { projectsContainer } from "../components/main/main.js";
+import { projectsContainer } from '../components/main/main.js';
+import { saveProjectsToLocalStorage } from './saveData.js';
 
 // Function to load project data from localStorage
 export function loadProjectsFromLocalStorage() {
-
   //clearing the projectContainer before appending new projects to avoid duplications
   projectsContainer.innerHTML = '';
-  
+
   let projects = JSON.parse(localStorage.getItem('projects'));
 
   projects.forEach((project) => {
@@ -116,9 +116,10 @@ export function loadProjectsFromLocalStorage() {
 
     arrowSpan.addEventListener('click', handleArrowSpanClick);
 
-    prioritySelect.addEventListener('change', function () {
-      let selectedOption = this.value;
+    prioritySelect.value = project.priority.toLowerCase(); // Set the selected option
 
+    // Define a function to apply styles based on the selected priority
+    function applyPriorityStyles(selectedOption, projectItem) {
       if (selectedOption === 'low') {
         projectItem.style.borderLeft = '15px solid green';
       } else if (selectedOption === 'medium') {
@@ -126,6 +127,31 @@ export function loadProjectsFromLocalStorage() {
       } else if (selectedOption === 'high') {
         projectItem.style.borderLeft = '15px solid red';
       }
+    }
+
+    prioritySelect.addEventListener('change', function () {
+      let selectedOption = prioritySelect.value;
+
+      // Apply styles based on the selected priority
+      applyPriorityStyles(selectedOption, projectItem);
+
+      // Update the priority value in the projects array
+      let updatedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+      let projectName = projectItem.querySelector('.projectName').textContent;
+      let projectToUpdate = updatedProjects.find(
+        (project) => project.name === projectName
+      );
+      if (projectToUpdate) {
+        projectToUpdate.priority = selectedOption;
+      }
+
+      // Save the updated projects array back to local storage
+      localStorage.setItem('projects', JSON.stringify(updatedProjects));
+    });
+
+    window.addEventListener('load', function () {
+      let selectedOption = prioritySelect.value;
+      applyPriorityStyles(selectedOption, projectItem);
     });
 
     function handleArrowSpanClick() {
@@ -171,7 +197,8 @@ export function loadProjectsFromLocalStorage() {
 
         // Save the updated projects array to localStorage
         localStorage.setItem('projects', JSON.stringify(projects));
+        // saveProjectsToLocalStorage()
       }
     });
   });
-};
+}

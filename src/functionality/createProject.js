@@ -4,12 +4,15 @@ import { projectNameInput } from '../components/main/main.js';
 import { saveProjectsToLocalStorage } from './saveData.js';
 import { loadProjectsFromLocalStorage } from './loadData.js';
 
-
 export let projects = [];
 export function createProject() {
   class Project {
     constructor(name) {
       this.name = name;
+      this.notes = ''; // Add notes property to project
+      this.dueDate = ''; // Add dueDate property to project
+      this.priority = 'Low'; // Add priority property to project with default value
+      this.isChecked = false; // Add isChecked property to project with default value
     }
   }
 
@@ -33,4 +36,3 @@ export function createProject() {
   // Reload projects from localStorage
   loadProjectsFromLocalStorage();
 }
-
