@@ -22,7 +22,15 @@ submitProjectBtn.type = 'submit';
 submitProjectBtn.textContent = '+Project';
 submitProjectBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  createProject();
+  if (projectNameInput.value !== '' && projectNameInput.value.length >= 1) {
+    createProject();
+    projectNameInput.placeholder = 'Project name...';
+    projectNameInput.style.outline = 'none';
+  } else {
+    projectNameInput.placeholder =
+      'Please enter a project name with 1 or more characters';
+    projectNameInput.style.outline = '3px solid maroon';
+  }
 });
 projectForm.appendChild(submitProjectBtn);
 
