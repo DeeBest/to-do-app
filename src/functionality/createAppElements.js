@@ -4,12 +4,28 @@ import { projectsContainer } from '../components/main/main.js';
 import { getData } from './getData.js';
 import { saveProjectsToLocalStorage } from './saveData.js';
 
-// Function to load project data from localStorage
+function sortProjectsFunc() {
+  let projects = getData();
+
+  //sorting project based on their isChecked
+  const sortedProjects = projects.sort((a, b) => {
+    if (a.isChecked && !b.isChecked) {
+      return 1;
+    }
+    if (!a.isChecked && b.checked) {
+      return -1;
+    }
+    return 0;
+  });
+  return sortedProjects;
+}
+
+// Function to create html elements
 export function createAppElements() {
   //clearing the projectContainer before appending new projects to avoid duplications
   projectsContainer.innerHTML = '';
 
-  let projects = getData();
+  let projects = sortProjectsFunc();
 
   projects.forEach((project) => {
     const projectItem = document.createElement('div');
@@ -106,6 +122,7 @@ export function createAppElements() {
       optionElement.textContent = option;
       prioritySelect.appendChild(optionElement);
     });
+
     prioritySelect.value = project.priority;
 
     let deleteProjectBtnDiv = document.createElement('div');
@@ -138,12 +155,14 @@ export function createAppElements() {
           saveProjectsToLocalStorage(projects);
         }
       }
-
-      document
+      projectItem
         .querySelector('.projectName')
         .classList.toggle('completedProject');
-      document.querySelector('.dueDate').classList.toggle('completedProject');
-      document.querySelector('.arrowSpan').classList.toggle('hideArrowSpan');
+      projectItem
+        .querySelector('.dueDate')
+        .classList.toggle('completedProject');
+      projectItem.querySelector('.arrowSpan').classList.toggle('hideArrowSpan');
+      reload();
     });
 
     notesTextarea.addEventListener('change', (e) => {
@@ -217,4 +236,7 @@ export function createAppElements() {
       }
     });
   });
+}
+function reload() {
+  createAppElements();
 }
