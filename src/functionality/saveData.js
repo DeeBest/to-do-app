@@ -1,7 +1,5 @@
 //saveData.js
 
-import { projects } from './createProject.js';
-
-export function saveProjectsToLocalStorage() {
+export function saveProjectsToLocalStorage(projects) {
   localStorage.setItem('projects', JSON.stringify(projects));
-};
+}

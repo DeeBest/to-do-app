@@ -3,7 +3,7 @@ import './index.css';
 import { header } from './components/header/header.js';
 import { main } from './components/main/main.js';
 import { footer } from './components/footer/footer.js';
-import { loadProjectsFromLocalStorage } from './functionality/loadData.js';
+import { createAppElements } from './functionality/createAppElements.js';
 
 (() => {
   const page = document.querySelector('body');
@@ -13,5 +13,5 @@ import { loadProjectsFromLocalStorage } from './functionality/loadData.js';
   page.appendChild(main);
   page.appendChild(footer);
 
-  loadProjectsFromLocalStorage();
+  createAppElements();
 })();

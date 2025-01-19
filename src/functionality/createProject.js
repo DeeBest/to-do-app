@@ -2,12 +2,14 @@
 
 import { projectNameInput } from '../components/main/main.js';
 import { saveProjectsToLocalStorage } from './saveData.js';
-import { loadProjectsFromLocalStorage } from './loadData.js';
+import { createAppElements } from './createAppElements.js';
+import { getData } from './getData.js';
 
 export let projects = [];
 export function createProject() {
   class Project {
     constructor(name) {
+      this.id = new Date().getTime();
       this.name = name;
       this.notes = ''; // Add notes property to project
       this.dueDate = ''; // Add dueDate property to project
@@ -19,7 +21,7 @@ export function createProject() {
   let newProject = new Project(projectNameInput.value);
 
   // Load existing projects from localStorage
-  let existingProjects = JSON.parse(localStorage.getItem('projects')) || [];
+  let existingProjects = getData();
 
   // Add the new project to the existing projects array
   existingProjects.push(newProject);
@@ -28,11 +30,11 @@ export function createProject() {
   projects = existingProjects;
 
   // Save the updated projects array to localStorage
-  saveProjectsToLocalStorage();
+  saveProjectsToLocalStorage(projects);
 
   // Clear the input field
   projectNameInput.value = '';
 
   // Reload projects from localStorage
-  loadProjectsFromLocalStorage();
+  createAppElements();
 }

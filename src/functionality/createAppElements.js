@@ -1,20 +1,17 @@
 //loadData.js
 
 import { projectsContainer } from '../components/main/main.js';
+import { getData } from './getData.js';
 import { saveProjectsToLocalStorage } from './saveData.js';
 
 // Function to load project data from localStorage
-export function loadProjectsFromLocalStorage() {
+export function createAppElements() {
   //clearing the projectContainer before appending new projects to avoid duplications
   projectsContainer.innerHTML = '';
 
-  let projects = JSON.parse(localStorage.getItem('projects'));
+  let projects = getData();
 
   projects.forEach((project) => {
-    let currentDateDay = `${new Date().getDate()}/${
-      new Date().getMonth() + 1
-    }/${new Date().getFullYear()}`;
-
     const projectItem = document.createElement('div');
     projectItem.classList.add('projectItem');
     projectsContainer.appendChild(projectItem);
@@ -34,6 +31,7 @@ export function loadProjectsFromLocalStorage() {
     let projectCheckBox = document.createElement('input');
     projectCheckBox.classList.add('projectCheckBox');
     projectCheckBox.type = 'checkbox';
+    projectCheckBox.checked = project.isChecked;
     projectNameAndCheckBoxDiv.appendChild(projectCheckBox);
 
     let projectName = document.createElement('span');
@@ -43,7 +41,7 @@ export function loadProjectsFromLocalStorage() {
 
     let dueDate = document.createElement('span');
     dueDate.classList.add('dueDate');
-    dueDate.textContent = currentDateDay;
+    dueDate.textContent = project.dueDate;
     dueDateAndArrowDiv.appendChild(dueDate);
 
     let arrowSpan = document.createElement('span');
@@ -67,6 +65,7 @@ export function loadProjectsFromLocalStorage() {
     let notesTextarea = document.createElement('textarea');
     notesTextarea.classList.add('notesTextarea');
     notesTextarea.placeholder = 'Notes about the project...';
+    notesTextarea.value = project.notes;
     notesDiv.appendChild(notesTextarea);
 
     let dueDateDiv = document.createElement('div');
@@ -104,6 +103,7 @@ export function loadProjectsFromLocalStorage() {
       optionElement.textContent = option;
       prioritySelect.appendChild(optionElement);
     });
+    prioritySelect.value = project.priority;
 
     let deleteProjectBtnDiv = document.createElement('div');
     deleteProjectBtnDiv.classList.add('deleteProjectBtnDiv');
@@ -114,70 +114,78 @@ export function loadProjectsFromLocalStorage() {
     removeProjectBtn.textContent = 'Delete';
     deleteProjectBtnDiv.appendChild(removeProjectBtn);
 
-    arrowSpan.addEventListener('click', handleArrowSpanClick);
-
-    prioritySelect.value = project.priority.toLowerCase(); // Set the selected option
-
-    // Define a function to apply styles based on the selected priority
-    function applyPriorityStyles(selectedOption, projectItem) {
-      if (selectedOption === 'low') {
-        projectItem.style.borderLeft = '15px solid green';
-      } else if (selectedOption === 'medium') {
-        projectItem.style.borderLeft = '15px solid yellow';
-      } else if (selectedOption === 'high') {
-        projectItem.style.borderLeft = '15px solid red';
-      }
-    }
-
-    prioritySelect.addEventListener('change', function () {
-      let selectedOption = prioritySelect.value;
-
-      // Apply styles based on the selected priority
-      applyPriorityStyles(selectedOption, projectItem);
-
-      // Update the priority value in the projects array
-      let updatedProjects = JSON.parse(localStorage.getItem('projects')) || [];
-      let projectName = projectItem.querySelector('.projectName').textContent;
-      let projectToUpdate = updatedProjects.find(
-        (project) => project.name === projectName
-      );
-      if (projectToUpdate) {
-        projectToUpdate.priority = selectedOption;
-      }
-
-      // Save the updated projects array back to local storage
-      localStorage.setItem('projects', JSON.stringify(updatedProjects));
-    });
-
-    window.addEventListener('load', function () {
-      let selectedOption = prioritySelect.value;
-      applyPriorityStyles(selectedOption, projectItem);
-    });
-
     function handleArrowSpanClick() {
       projectBody.classList.toggle('show');
       arrowSpan.classList.toggle('arrowSpanUp');
     }
+    arrowSpan.addEventListener('click', handleArrowSpanClick);
 
-    dueDateInput.addEventListener('change', function () {
-      const selectedDate = this.value;
-      const [year, month, day] = selectedDate.split('-');
-      const formattedDate = `${day}/${month}/${year}`;
-      dueDate.textContent = formattedDate;
-      project.dueDate = this.value;
+    projectCheckBox.addEventListener('change', () => {
+      const projectName = projectItem.querySelector('.projectName').textContent;
+      const foundProject = projects.filter(
+        (project) => project.name === projectName
+      );
+
+      if (foundProject) {
+        if (projectCheckBox.checked) {
+          project.isChecked = true;
+          saveProjectsToLocalStorage(projects);
+        } else {
+          project.isChecked = false;
+          saveProjectsToLocalStorage(projects);
+        }
+      }
     });
 
-    projectCheckBox.addEventListener('change', function () {
-      if (this.checked) {
-        projectName.classList.add('completedProject');
-        dueDate.classList.add('completedProject');
-        arrowSpan.removeEventListener('click', handleArrowSpanClick);
-        projectBody.classList.remove('show');
-        arrowSpan.classList.remove('arrowSpanUp');
+    notesTextarea.addEventListener('change', (e) => {
+      const projectName = projectItem.querySelector('.projectName').textContent;
+      const foundProject = projects.filter(
+        (project) => project.name === projectName
+      );
+
+      if (foundProject) {
+        project.notes = e.target.value;
+      }
+      saveProjectsToLocalStorage(projects);
+    });
+
+    function applyPriorityStyles() {
+      if (project.priority === 'high') {
+        projectItem.style.borderLeft = '15px solid red';
+      } else if (project.priority === 'medium') {
+        projectItem.style.borderLeft = '15px solid yellow';
       } else {
-        projectName.classList.remove('completedProject');
-        dueDate.classList.remove('completedProject');
-        arrowSpan.addEventListener('click', handleArrowSpanClick);
+        projectItem.style.borderLeft = '15px solid green';
+      }
+    }
+    applyPriorityStyles();
+
+    prioritySelect.addEventListener('change', function () {
+      const projectName = projectItem.querySelector('.projectName').textContent;
+      const foundProject = projects.filter(
+        (project) => project.name === projectName
+      );
+
+      if (foundProject) {
+        project.priority = this.value;
+      }
+      saveProjectsToLocalStorage(projects);
+      applyPriorityStyles();
+    });
+
+    dueDateInput.addEventListener('change', function () {
+      const projectName = projectItem.querySelector('.projectName').textContent;
+      const foundProject = projects.filter(
+        (project) => project.name === projectName
+      );
+
+      if (foundProject) {
+        const selectedDate = this.value;
+        const [year, month, day] = selectedDate.split('-');
+        const formattedDate = `${day}/${month}/${year}`;
+        dueDate.textContent = formattedDate;
+        project.dueDate = this.value;
+        saveProjectsToLocalStorage(projects);
       }
     });
 
@@ -187,18 +195,18 @@ export function loadProjectsFromLocalStorage() {
 
       // Find the index of the project to be removed in the projects array
       const projectName = projectItem.querySelector('.projectName').textContent;
-      const indexToRemove = projects.findIndex(
+      const foundProject = projects.findIndex(
         (project) => project.name === projectName
       );
 
       // If the project is found in the projects array, remove it
-      if (indexToRemove !== -1) {
-        projects.splice(indexToRemove, 1);
+      if (foundProject !== -1) {
+        projects.splice(foundProject, 1);
 
         // Save the updated projects array to localStorage
-        localStorage.setItem('projects', JSON.stringify(projects));
-        // saveProjectsToLocalStorage()
+        saveProjectsToLocalStorage(projects);
       }
     });
+    // console.log(projects);
   });
 }
