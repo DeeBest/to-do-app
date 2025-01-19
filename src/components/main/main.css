@@ -67,7 +67,7 @@
   align-items: center;
   gap: 10px;
 }
-.projectItem{
+.projectItem {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -80,18 +80,18 @@
   box-shadow: 1.5px 1.5px 3px 1px hsla(0, 0%, 10%, 0.8);
   transition: all 1s;
 }
-.projectItem:hover{
+.projectItem:hover {
   transform: scale(0.99);
   box-shadow: 0px 0px 0px 0px hsla(0, 0%, 0%, 0);
 }
-.projectHeader{
+.projectHeader {
   display: flex;
   gap: 20px;
   align-items: center;
   min-width: 100%;
   justify-content: space-between;
 }
-.projectNameAndCheckBoxDiv{
+.projectNameAndCheckBoxDiv {
   flex: 1;
   display: flex;
   padding: 10px;
@@ -99,37 +99,37 @@
   align-items: center;
   gap: 20px;
 }
-.dueDateAndArrowDiv{
+.dueDateAndArrowDiv {
   display: flex;
   padding: 10px;
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
 }
-.projectCheckBox{
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+.projectCheckBox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 .projectName,
 .dueDate,
-.arrowSpan{
+.arrowSpan {
   font-weight: bold;
   color: hsl(0, 0%, 100%, 0.7);
   font-size: 1.5rem;
 }
-.arrowSpan{
+.arrowSpan {
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.arrowSpan:hover{
+.arrowSpan:hover {
   color: hsl(0, 0%, 100%);
 }
 .arrowSpanUp {
   transform: rotate(180deg);
 }
-.projectBody{
+.projectBody {
   min-width: 100%;
   display: none;
   opacity: 0;
@@ -142,7 +142,7 @@
   display: grid;
   opacity: 1;
 }
-.notesDiv{
+.notesDiv {
   grid-column: 1/2;
   grid-row: 1/4;
   display: flex;
@@ -150,7 +150,7 @@
   align-items: center;
   overflow: hidden;
 }
-.notesTextarea{
+.notesTextarea {
   min-width: 95%;
   max-width: 100%;
   min-height: 250px;
@@ -165,13 +165,13 @@
   outline: none;
   border-radius: 10px;
 }
-.dueDateDiv{
+.dueDateDiv {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 .dueDateInput,
-.prioritySelect{
+.prioritySelect {
   min-width: 95%;
   padding: 10px;
   border: none;
@@ -183,13 +183,13 @@
   text-align: center;
   border-radius: 5px;
 }
-.deleteProjectBtnDiv{
+.deleteProjectBtnDiv {
   display: flex;
   padding: 10px;
   align-items: flex-end;
   justify-content: flex-end;
 }
-.removeProjectBtn{
+.removeProjectBtn {
   background-color: red;
   color: white;
   font-weight: bold;
@@ -203,20 +203,23 @@
   cursor: pointer;
   transition: all 0.5s;
 }
-.removeProjectBtn:hover{
+.removeProjectBtn:hover {
   background-color: hsl(0, 100%, 40%);
   color: hsl(0, 0%, 90%);
   transform: scale(0.97);
 }
-.removeProjectBtn:active{
+.removeProjectBtn:active {
   background-color: hsl(0, 100%, 30%);
   color: hsl(0, 0%, 80%);
   transform: scale(0.97);
 }
 
-.completedProject{
+.completedProject {
   text-decoration: line-through;
   color: hsl(0, 0%, 100%, 0.4);
+}
+.hideArrowSpan {
+  display: none;
 }
 
 @keyframes slideInFromLeft {
@@ -228,38 +231,36 @@
   }
 }
 
-
-@media screen and (max-width:600px) {
- #projectForm{
-  flex-direction: column;
-  justify-content: flex-start;
- }
-  .projectItem{
-  min-width: 100%;
-  flex-direction: column;
- }
- #projectNameInput{
-  min-width: 100%;
- } 
- #projectsContainer{
-  min-width: 100%;
- }
- #main{
-  padding: 10px;
- }
- .projectHeader{
-  flex-direction: column;
-  
- }
- .projectNameAndCheckBoxDiv,
- .dueDateAndArrowDiv{
-  min-width: 100%;
-  justify-content: center;
- }
- .projectBody{
-  grid-template-columns: 1fr;
- }
- .notesTextarea{
-  min-height: min-content;
- }
+@media screen and (max-width: 600px) {
+  #projectForm {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .projectItem {
+    min-width: 100%;
+    flex-direction: column;
+  }
+  #projectNameInput {
+    min-width: 100%;
+  }
+  #projectsContainer {
+    min-width: 100%;
+  }
+  #main {
+    padding: 10px;
+  }
+  .projectHeader {
+    flex-direction: column;
+  }
+  .projectNameAndCheckBoxDiv,
+  .dueDateAndArrowDiv {
+    min-width: 100%;
+    justify-content: center;
+  }
+  .projectBody {
+    grid-template-columns: 1fr;
+  }
+  .notesTextarea {
+    min-height: min-content;
+  }
 }

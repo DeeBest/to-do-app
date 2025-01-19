@@ -35,17 +35,20 @@ export function createAppElements() {
     projectNameAndCheckBoxDiv.appendChild(projectCheckBox);
 
     let projectName = document.createElement('span');
-    projectName.classList.add('projectName');
+    projectName.className = `projectName`;
+    projectName.classList.add(`${project.isChecked && 'completedProject'}`);
     projectName.textContent = project.name;
     projectNameAndCheckBoxDiv.appendChild(projectName);
 
     let dueDate = document.createElement('span');
-    dueDate.classList.add('dueDate');
+    dueDate.className = `dueDate`;
+    dueDate.classList.add(`${project.isChecked && 'completedProject'}`);
     dueDate.textContent = project.dueDate;
     dueDateAndArrowDiv.appendChild(dueDate);
 
     let arrowSpan = document.createElement('span');
-    arrowSpan.classList.add('arrowSpan');
+    arrowSpan.className = `arrowSpan`;
+    arrowSpan.classList.add(`${project.isChecked && 'hideArrowSpan'}`);
     arrowSpan.textContent = '▼';
     dueDateAndArrowDiv.appendChild(arrowSpan);
 
@@ -135,6 +138,12 @@ export function createAppElements() {
           saveProjectsToLocalStorage(projects);
         }
       }
+
+      document
+        .querySelector('.projectName')
+        .classList.toggle('completedProject');
+      document.querySelector('.dueDate').classList.toggle('completedProject');
+      document.querySelector('.arrowSpan').classList.toggle('hideArrowSpan');
     });
 
     notesTextarea.addEventListener('change', (e) => {
@@ -207,6 +216,5 @@ export function createAppElements() {
         saveProjectsToLocalStorage(projects);
       }
     });
-    // console.log(projects);
   });
 }
