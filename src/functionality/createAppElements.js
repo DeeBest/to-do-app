@@ -183,8 +183,8 @@ export function createAppElements() {
         const selectedDate = this.value;
         const [year, month, day] = selectedDate.split('-');
         const formattedDate = `${day}/${month}/${year}`;
-        dueDate.textContent = formattedDate;
-        project.dueDate = this.value;
+        project.dueDate = formattedDate;
+        dueDate.textContent = project.dueDate;
         saveProjectsToLocalStorage(projects);
       }
     });
